@@ -1,8 +1,8 @@
-Financial Expert System
+## Financial Expert System
 
 A rule-based expert system for financial health assessment, built in Go. Uses forward chaining inference to evaluate company financial metrics against a knowledge base of rules and derive an overall health status — with no machine learning or LLM involved.
 
-What It Does
+### What It Does
 
 The system reads a company's financial metrics from a JSON file, fires a chain of inference rules, derives intermediate facts, and produces:
 
@@ -12,7 +12,7 @@ A set of derived facts added to the working memory
 Actionable recommendations based on weaknesses found
 An industry benchmark comparison with deltas per metric
 
-How It Works — Forward Chaining
+### How It Works — Forward Chaining
 
 The engine implements a classic forward chaining inference loop:
 
@@ -22,13 +22,13 @@ If a rule's conditions are satisfied by current facts → the rule fires, adding
 The loop repeats until no new rules fire (fixed point)
 Final status rules check accumulated facts and derive the overall verdict
 
-This is a two-level inference architecture:
+### This is a two-level inference architecture:
 
 Level 1 rules — evaluate individual metrics (e.g. DebtToEquity > 2.0 → assert LeverageHigh)
 Level 2 rules — aggregate Level 1 facts to derive overall status (e.g. LeverageHigh ∧ LiquidityLow ∧ ProfitabilityNegative → assert StatusCritical)
 
 Project Structure
-
+```
 financial-expert-system/
 ├── main.go                  # Entry point, CLI argument parsing
 ├── go.mod                   # Go module definition
@@ -51,28 +51,28 @@ financial-expert-system/
     ├── healthy\_company.json  # GrowthTech Inc — STRONG example
     ├── stable\_company.json   # SteadyCo Ltd — STABLE example
     └── weak\_company.json     # StrugglingCo — WEAK example
+```
 
-
-Running the System
+### Running the System
 
 Prerequisites
-
+```
 Go 1.21 or later
-
+```
 Single company analysis
-
+```
 go run . data/company.json
+```
 
-
-Batch comparison of multiple companies
-
+### Batch comparison of multiple companies
+```
 go run . --batch data/company.json data/healthy\company.json data/stable\company.json data/weak\_company.json
+```
 
-
-Input Format
+### Input Format
 
 Each company is defined in a JSON file:
-
+```
 {
   "name": "Acme Corp",
   "industry": "retail",
@@ -84,14 +84,14 @@ Each company is defined in a JSON file:
   "roe": -0.062,
   "interest\_coverage": 1.1
 }
-
+```
 
 The industry field is matched against data/benchmark.json to load sector-specific averages.
 
 Inference Rules — Knowledge Base
 
 Level 1 — Metric Classification
-
+```
 | Rule | Condition | Derived Fact |
 |---|---|---|
 | HighLeverage | D/E > 2.0 | LeverageHigh |
@@ -106,17 +106,18 @@ Level 1 — Metric Classification
 | GrowthStrong | Revenue Growth ≥ 0.12 | GrowthStrong |
 | InterestCoverageWeak | Interest Coverage < 1.5 | InterestCoverageWeak |
 | InterestCoverageSafe | Interest Coverage ≥ 3.0 | InterestCoverageStrong |
-
+```
 Level 2 — Status Derivation
-
+```
 | Rule | Conditions | Status |
 |---|---|---|
 | StatusCritical | LeverageHigh ∧ LiquidityLow ∧ ProfitabilityNegative | 🔴 CRITICAL |
 | StatusWeak | LeverageHigh ∨ (ROELow ∧ GrowthNegative) | 🟠 WEAK |
 | StatusStable | ¬LeverageHigh ∧ ¬LiquidityLow ∧ ¬ProfitabilityNegative | 🟡 STABLE |
 | StatusStrong | LeverageLow ∧ LiquidityGood ∧ ROEStrong ∧ GrowthStrong | 🟢 STRONG |
+```
 
-Example Output
+### Example Output
 
 ════════════════════════════════════════════════════════
   FINANCIAL EXPERT SYSTEM — Acme Corp
@@ -142,7 +143,7 @@ Example Output
   Net Profit Margin -4.50  vs   4.50   Δ -9.00  🔴
 
 
-Threshold Rationale
+### Threshold Rationale
 
 Thresholds are based on widely accepted financial analysis standards:
 
@@ -153,7 +154,7 @@ ROE < 10% — below the typical cost of equity capital
 Interest Coverage < 1.5x — earnings barely cover interest payments; distress territory
 Revenue Growth < 0 — shrinking top line compounds all other problems
 
-Tech Stack
+### Tech Stack
 
 Language: Go 1.21
 Dependencies: none (standard library only)
