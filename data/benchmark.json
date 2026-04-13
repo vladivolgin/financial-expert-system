@@ -1,0 +1,47 @@
+{
+  "technology": {
+    "debt_to_equity":    0.45,
+    "current_ratio":     1.80,
+    "net_profit_margin": 18.0,
+    "revenue_growth":    15.0,
+    "roe":               22.0,
+    "interest_coverage": 12.0,
+    "cash_ratio":        0.70
+  },
+  "retail": {
+    "debt_to_equity":    1.20,
+    "current_ratio":     1.30,
+    "net_profit_margin": 4.5,
+    "revenue_growth":    5.0,
+    "roe":               14.0,
+    "interest_coverage": 4.0,
+    "cash_ratio":        0.30
+  },
+  "banking": {
+    "debt_to_equity":    3.50,
+    "current_ratio":     1.10,
+    "net_profit_margin": 22.0,
+    "revenue_growth":    8.0,
+    "roe":               12.0,
+    "interest_coverage": 2.5,
+    "cash_ratio":        0.20
+  },
+  "manufacturing": {
+    "debt_to_equity":    0.90,
+    "current_ratio":     1.60,
+    "net_profit_margin": 8.0,
+    "revenue_growth":    6.0,
+    "roe":               16.0,
+    "interest_coverage": 5.0,
+    "cash_ratio":        0.40
+  },
+  "healthcare": {
+    "debt_to_equity":    0.60,
+    "current_ratio":     2.10,
+    "net_profit_margin": 12.0,
+    "revenue_growth":    10.0,
+    "roe":               18.0,
+    "interest_coverage": 8.0,
+    "cash_ratio":        0.55
+  }
+}

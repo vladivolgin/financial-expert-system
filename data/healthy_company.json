@@ -1,0 +1,11 @@
+{
+  "company_name":      "GrowthTech Inc",
+  "industry":          "technology",
+  "debt_to_equity":    0.6,
+  "current_ratio":     2.4,
+  "cash_ratio":        0.8,
+  "net_profit_margin": 12.5,
+  "revenue_growth":    18.0,
+  "roe":               22.4,
+  "interest_coverage": 8.5
+}

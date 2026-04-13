@@ -1,0 +1,10 @@
+# Binaries
+financial-expert-system
+*.exe
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
